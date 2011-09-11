@@ -1,0 +1,9 @@
+(name Console.WriteLine)
+
+(trigger
+    (tab writeline))
+
+(only-in source.cs)
+
+(snippet [Console.WriteLine(%{1});
+%{0}])

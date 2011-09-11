@@ -1,0 +1,28 @@
+(detector
+    (extension cs))
+
+(folding
+    (start [^\s*/\*|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))])
+    (stop [^\s*\*/|^\s*\}]))
+
+(in source.nant-build
+    (pair "
+        "
+        (smart-typing)
+        (highlight))
+    (pair <
+        >
+        (highlight))
+    (pair `[`
+        `]`
+        (smart-typing)
+        (highlight))
+    (pair [(]
+        [)]
+        (smart-typing)
+        (highlight))
+    (pair [{]
+        [}]
+        (smart-typing)
+        (highlight))
+    (indentation.increase [<[^/>]*>\s*$]))

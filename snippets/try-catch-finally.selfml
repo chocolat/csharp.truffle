@@ -1,0 +1,19 @@
+(name [Try / Catch / Finally])
+
+(trigger
+    (tab try))
+
+(only-in source.cs)
+
+(snippet [try
+{
+	%{2="// Code to try here"}
+}
+catch (%{1="System.Exception"} e) 
+{
+	%{3="// Code to handle exception here"}
+}
+finally
+{
+	%{0="// Code to execute after try (and possibly catch) here"}
+}])

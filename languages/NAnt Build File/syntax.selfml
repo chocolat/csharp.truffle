@@ -1,0 +1,42 @@
+(root source.nant-build
+    (zone comment.block.nant
+        (start
+            (regex <!--
+                (0 punctuation.definition.comment.nant)))
+        (end
+            (regex -->
+                (0 punctuation.definition.comment.nant))))
+    (zone meta.tag.nant
+        (start
+            (regex [(</?)([-_a-zA-Z0-9:]+)]
+                (1 punctuation.definition.tag.nant)
+                (2 entity.name.tag.nant)))
+        (end
+            (regex [(/?>)]
+                (1 punctuation.definition.tag.nant)
+                (2 entity.name.tag.nant)))
+        (subzones
+            (zone entity.other.attribute-name.nant
+                (match
+                    (regex [ ([a-zA-Z-]+)])))
+            (zone string.quoted.double.nant
+                (start
+                    (regex "
+                        (0 punctuation.definition.string.begin.nant)))
+                (end
+                    (regex "
+                        (0 punctuation.definition.string.end.nant))))
+            (zone string.quoted.single.nant
+                (start
+                    (regex '
+                        (0 punctuation.definition.string.begin.nant)))
+                (end
+                    (regex '
+                        (0 punctuation.definition.string.end.nant))))))
+    (zone constant.character.entity.nant
+        (match
+            (regex [(&)([a-zA-Z]+|#[0-9]+|#x[0-9a-fA-F]+)(;)]
+                (3 punctuation.definition.constant.nant)
+                (1 punctuation.definition.constant.nant))))
+    (zone invalid.illegal.bad-ampersand.nant
+        (match &)))

@@ -1,0 +1,13 @@
+(name Switch)
+
+(trigger
+    (tab switch))
+
+(only-in source.cs)
+
+(snippet [switch (%{1="Expression"})
+{
+	case %{2="Constant"}:
+		%{0}
+		break;
+}])

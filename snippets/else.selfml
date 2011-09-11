@@ -1,0 +1,11 @@
+(name Else)
+
+(trigger
+    (tab else))
+
+(only-in source.cs)
+
+(snippet [else
+{
+	%{0}
+}])

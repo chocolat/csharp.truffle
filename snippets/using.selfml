@@ -1,0 +1,8 @@
+(name Using)
+
+(trigger
+    (tab us))
+
+(only-in source.cs)
+
+(snippet [using %{1="System"};])

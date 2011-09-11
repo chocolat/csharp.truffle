@@ -1,0 +1,14 @@
+(name Class)
+
+(trigger
+    (tab class))
+
+(only-in source.cs)
+
+(snippet [/// <summary>
+///   Description of class goes here
+/// </summary>
+%{1="public"} class %{2="ClassName"}
+{
+	%{0}
+}])

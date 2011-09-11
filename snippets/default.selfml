@@ -1,0 +1,11 @@
+(name Default)
+
+(trigger
+    (tab default))
+
+(only-in source.cs)
+
+(snippet [default:
+	%{0}
+	break;
+])

@@ -1,0 +1,19 @@
+(name [Property (Read-Write)])
+
+(trigger
+    (tab rw))
+
+(only-in source.cs)
+
+(snippet [%{1="public"} %{2="Type"} %{3="PropertyName"}
+{
+	get
+	{
+		return %{4="%{3/./\l$0/}"};
+	}
+	set
+	{
+		%{5="%{4}"} = value;
+	}
+}
+])

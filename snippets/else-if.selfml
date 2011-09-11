@@ -1,0 +1,12 @@
+(name [Else If])
+
+(trigger
+    (tab elseif))
+
+(only-in source.cs)
+
+(snippet [else if (%{1="Condition"})
+{
+	%{0}
+}
+])

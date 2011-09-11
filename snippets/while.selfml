@@ -1,0 +1,11 @@
+(name While)
+
+(trigger
+    (tab while))
+
+(only-in source.cs)
+
+(snippet [while (%{1="Condition"})
+{
+	%{0}
+}])

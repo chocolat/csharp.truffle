@@ -1,0 +1,4 @@
+(menu
+    (submenu Declarations snippet.namespace snippet.class snippet.interface snippet.struct --- snippet.public-method snippet.private-method snippet.property-ro snippet.property-rw snippet.delegate --- snippet.if snippet.else-if snippet.else --- snippet.switch snippet.case snippet.default --- snippet.do-while snippet.while snippet.for snippet.foreach --- snippet.try-catch-finally snippet.wrap-selection-in-try-catch --- snippet.using)
+    (submenu Idioms snippet.main-method snippet.singleton-class)
+    snippet.writeline)

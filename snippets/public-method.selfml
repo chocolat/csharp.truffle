@@ -1,0 +1,14 @@
+(name [Public Method])
+
+(trigger
+    (tab pum))
+
+(only-in source.cs)
+
+(snippet [/// <summary>
+///   Description of public method goes here
+/// </summary>
+public %{1="ReturnType"} %{2="MethodName"}(%{3="ParameterType"} %{4="ParameterName"})
+{
+	%{0}
+}])

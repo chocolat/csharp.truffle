@@ -1,0 +1,15 @@
+(name [Property (Read-Only)])
+
+(trigger
+    (tab r))
+
+(only-in source.cs)
+
+(snippet [%{1="public"} %{2="Type"} %{3="PropertyName"}
+{
+	get
+	{
+		return %{4="%{3/./\l$0/}"};
+	}
+}
+])

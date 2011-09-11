@@ -1,0 +1,14 @@
+(name [Private Method])
+
+(trigger
+    (tab pm))
+
+(only-in source.cs)
+
+(snippet [/// <summary>
+///   Description of private method goes here
+/// </summary>
+private %{1="ReturnType"} %{2="MethodName"}(%{3="ParameterType"} %{4="ParameterName"})
+{
+	%{0}
+}])

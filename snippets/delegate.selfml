@@ -1,0 +1,13 @@
+(name Delegate)
+
+(trigger
+    (tab delegate))
+
+(only-in source.cs)
+
+(snippet [/// <summary>
+///   Description of delegate goes here
+/// </summary>
+public delegate %{1="ReturnType"} %{2="DelegateName"}(%{3="ParameterType"} %{4="ParameterName"});
+%{0}
+])

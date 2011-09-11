@@ -1,0 +1,14 @@
+(name Interface)
+
+(trigger
+    (tab interface))
+
+(only-in source.cs)
+
+(snippet [/// <summary>
+///   Description of interface goes here
+/// </summary>
+interface %{1="InterfaceName"}
+{
+	%{0}
+}])

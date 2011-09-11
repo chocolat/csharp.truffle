@@ -1,0 +1,31 @@
+(name [Singleton Class])
+
+(trigger
+    (tab sinc))
+
+(only-in source.cs)
+
+(snippet [/// <summary>
+///   Description of singleton class goes here
+/// </summary>
+public class %{1="Singleton"}
+{
+   private static %{1="Singleton"} %{3="%{2/./\l$0/}"};
+
+   private %{1="Singleton"}()
+   {
+   }
+
+   public static %{1="Singleton"} %{2="Instance"}
+   {
+      get 
+      {
+         if (%{3="%{2/./\l$0/}"} == null)
+         {
+            %{3="%{2/./\l$0/}"} = new %{1="Singleton"}();
+         }
+         return %{3="%{2/./\l$0/}"};
+      }
+   }
+}
+])

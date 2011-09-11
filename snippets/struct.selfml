@@ -1,0 +1,14 @@
+(name Struct)
+
+(trigger
+    (tab struct))
+
+(only-in source.cs)
+
+(snippet [/// <summary>
+///   Description of struct goes here
+/// </summary>
+%{1="public"} struct %{2="StructName"}
+{
+	%{0}
+}])

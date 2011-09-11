@@ -1,0 +1,11 @@
+(name If)
+
+(trigger
+    (tab if))
+
+(only-in source.cs)
+
+(snippet [if (%{1="Condition"})
+{
+	%{0}
+}])

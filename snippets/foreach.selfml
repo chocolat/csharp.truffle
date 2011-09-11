@@ -1,0 +1,11 @@
+(name Foreach)
+
+(trigger
+    (tab foreach))
+
+(only-in source.cs)
+
+(snippet [foreach (%{1="Type"} in %{2="Collection"})
+{
+	%{0}
+}])

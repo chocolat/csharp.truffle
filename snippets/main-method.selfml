@@ -1,0 +1,16 @@
+(name [Main Method])
+
+(trigger
+    (tab main))
+
+(only-in source.cs)
+
+(snippet [/// <summary>
+///   The main entry point for the application
+/// </summary>
+[STAThread]
+public static void Main(string[] args)
+{
+	%{0}
+}
+])

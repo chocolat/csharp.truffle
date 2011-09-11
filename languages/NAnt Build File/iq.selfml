@@ -1,0 +1,32 @@
+(detector
+    (extension build))
+
+(folding
+    (start [<[^!?/>]+|<!--])
+    (stop [/>|</[^?>]+|-->]))
+
+(pair "
+    "
+    (smart-typing)
+    (highlight))
+
+(pair <
+    >
+    (highlight))
+
+(pair `[`
+    `]`
+    (smart-typing)
+    (highlight))
+
+(pair [(]
+    [)]
+    (smart-typing)
+    (highlight))
+
+(pair [{]
+    [}]
+    (smart-typing)
+    (highlight))
+
+(indentation.increase [<[^/>]*>\s*$])

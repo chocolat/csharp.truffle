@@ -1,0 +1,11 @@
+(name For)
+
+(trigger
+    (tab for))
+
+(only-in source.cs)
+
+(snippet [for (%{1="Initializer"}; %{2="Condition"}; %{3="Update"})
+{
+	%{0}
+}])

@@ -1,0 +1,200 @@
+(root source.cs
+    (zone comment.block.documentation.source.cs
+        (start
+            (regex ///
+                (0 punctuation.definition.comment.source.cs)))
+        (end
+            (regex $\n?
+                (0 punctuation.definition.comment.source.cs)))
+        (subzones
+            (zone keyword.other.documentation.source.cs
+                (start
+                    (regex [(</?)(?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]+)]
+                        (3 entity.name.tag.source.cs)
+                        (4 punctuation.separator.namespace.source.cs)
+                        (5 entity.name.tag.localname.source.cs)
+                        (1 punctuation.definition.tag.source.cs)
+                        (2 entity.name.tag.namespace.source.cs)))
+                (end
+                    (regex [(/?>)]
+                        (3 entity.name.tag.source.cs)
+                        (4 punctuation.separator.namespace.source.cs)
+                        (5 entity.name.tag.localname.source.cs)
+                        (1 punctuation.definition.tag.source.cs)
+                        (2 entity.name.tag.namespace.source.cs)))
+                (subzones
+                    (zone
+                        (match
+                            (regex [ (?:([-_a-zA-Z0-9]+)((:)))?([_a-zA-Z-]+)=]
+                                (3 punctuation.separator.namespace.source.cs)
+                                (4 entity.other.attribute-name.localname.source.cs)
+                                (1 entity.other.attribute-name.namespace.source.cs)
+                                (2 entity.other.attribute-name.source.cs))))
+                    (include @doubleQuotedString)
+                    (include @singleQuotedString)))))
+    (include @comments)
+    (zone meta.definition.class.source.cs
+        (start
+            (regex [(?x)^\s*
+((?:\b(?:new|public|protected|internal|private|abstract|sealed|static)\b\s)*)
+(class)\s+
+([A-Za-z_]\w+)\b]
+                (3 entity.name.type.class.source.cs)
+                (1 storage.modifier.source.cs)
+                (2 storage.type.source.cs)))
+        (end
+            (regex [{]
+                (3 entity.name.type.class.source.cs)
+                (1 storage.modifier.source.cs)
+                (2 storage.type.source.cs)))
+        (subzones
+            (include @classInheritance)))
+    (zone meta.definition.operator.source.cs
+        (start
+            (regex [(?x)^\s*	                                                                            # start of line
+((?:\b(?:new|public|protected|internal|private|static|virtual|sealed|override|abstract|extern)\b\s*)*) 		# method-modifiers
+\b((?:\w+\.)*[A-Za-z_]\w*)\b\s*	                                                                      		# type
+(operator)\s+        			                                                                      		# operator overload
+((?:\+|-|!|~|\+\+|--|true|false|\*|/|%|\&|\||\^|<<|>>|==|!=|<|>|<=|>=)\s*)	                          		# operator name
+(?=\()]
+                (3 storage.modifier.source.cs)
+                (4 entity.name.function.source.cs)
+                (1 storage.modifier.source.cs)
+                (2 storage.type.source.cs)))
+        (end
+            (regex [\)]
+                (3 storage.modifier.source.cs)
+                (4 entity.name.function.source.cs)
+                (1 storage.modifier.source.cs)
+                (2 storage.type.source.cs)))
+        (subzones
+            (include @statementRemainder)))
+    (zone meta.definition.method.source.cs
+        (start
+            (regex [(?x)^\s*	                                                                        # start of line
+((?:\b(?:new|public|protected|internal|private|static|virtual|sealed|override|abstract|extern)\b\s*)*) 	# method-modifiers
+\b((?:\w+\.)*[A-Za-z_]\w*)\b\s*		                                                                  	# type
+([A-Za-z_]\w*)\s*					         			                                   			 	# name
+(?=\()]
+                (3 entity.name.function.source.cs)
+                (1 storage.modifier.source.cs)
+                (2 storage.type.source.cs)))
+        (end
+            (regex [\)]
+                (3 entity.name.function.source.cs)
+                (1 storage.modifier.source.cs)
+                (2 storage.type.source.cs)))
+        (subzones
+            (include @statementRemainder)))
+    (zone constant.language.source.cs
+        (match
+            (list true false null this base)
+            (boundary.both)))
+    (zone constant.numeric.source.cs
+        (match
+            (regex [\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\b])))
+    (zone keyword.control.source.cs
+        (match
+            (list if else while for foreach do return continue break switch case default goto throw try catch finally lock yield)
+            (boundary.both)))
+    (zone keyword.operator.source.cs
+        (match
+            (list new is checked unchecked typeof sizeof override in out ref readonly params stackalloc as)
+            (boundary.both)))
+    (zone keyword.other.source.cs
+        (match
+            (list event delegate explicit implicit in set get)
+            (boundary.both)))
+    (zone storage.modifier.source.cs
+        (match
+            (list internal public protected private static const new sealed abstract override extern unsafe readonly volatile operator)
+            (boundary.both)))
+    (include @doubleQuotedStringLiteral)
+    (include @doubleQuotedString)
+    (include @singleQuotedString)
+    (zone meta.keyword.using.source.cs
+        (match
+            (regex [^\s*(using)\s+([^ ;]*);]
+                (1 keyword.other.using.source.cs)
+                (2 entity.name.type.package.source.cs))))
+    (include @builtinTypes)
+    (zone meta.keyword.namespace.source.cs
+        (match
+            (regex [^\s*(namespace)\s+([^ ]+)(?:\s*{)?$]
+                (1 keyword.other.namespace.source.cs)
+                (2 entity.name.type.namespace.source.cs))))
+    (zone meta.preprocessor.source.cs
+        (match
+            (regex [^(#)\s*(if|else|elif|endif|define|undef|warning|error|line|region|endregion)\b]
+                (2 keyword.control.import.source.cs)))))
+
+(collection comments
+    (zone comment.block.source.cs
+        (start
+            (regex /\*
+                (0 punctuation.definition.comment.source.cs)))
+        (end
+            (regex \*/\n?
+                (0 punctuation.definition.comment.source.cs))))
+    (zone comment.line.double-slash.source.cs
+        (match
+            (regex [(//).*$\n?]
+                (1 punctuation.definition.comment.source.cs)))))
+
+(collection singleQuotedString
+    (zone string.quoted.single.xml
+        (start
+            (regex '
+                (0 punctuation.definition.string.begin.source.cs)))
+        (end
+            (regex '
+                (0 punctuation.definition.string.end.source.cs)))
+        (subzones
+            (zone constant.character.escape.source.cs
+                (match
+                    (regex \\.))))))
+
+(collection doubleQuotedString
+    (zone string.quoted.double.source.cs
+        (start
+            (regex "
+                (0 punctuation.definition.string.begin.source.cs)))
+        (end
+            (regex "
+                (0 punctuation.definition.string.end.source.cs)))
+        (subzones
+            (zone constant.character.escape.source.cs
+                (match
+                    (regex \\.))))))
+
+(collection statementRemainder
+    (zone meta.definition.param-list.source.cs
+        (start
+            (regex [\(]))
+        (end
+            (regex [(?=\))]))
+        (subzones
+            (include @builtinTypes))))
+
+(collection doubleQuotedStringLiteral
+    (zone string.quoted.double.literal.source.cs
+        (match
+            (regex [@"([^"]|"")*"]
+                (0 punctuation.definition.string.begin.source.cs)))))
+
+(collection classInheritance
+    (zone
+        (start :)
+        (end
+            (regex [(?={)]))
+        (subzones
+            (zone
+                (match
+                    (regex [\s*,?([A-Za-z_]\w*)\b]
+                        (1 storage.type.source.cs)))))))
+
+(collection builtinTypes
+    (zone storage.type.source.cs
+        (match
+            (list bool byte sbyte char decimal double float int uint long ulong object short ushort string void class struct enum interface)
+            (boundary.both))))

@@ -1,0 +1,12 @@
+(name Namespace)
+
+(trigger
+    (tab namespace))
+
+(only-in source.cs)
+
+(snippet [namespace %{1="NamespaceName"}
+{
+	%{0}
+}
+])

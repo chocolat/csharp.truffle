@@ -1,0 +1,11 @@
+(name Case)
+
+(trigger
+    (tab case))
+
+(only-in source.cs)
+
+(snippet [case %{1="Constant"}:
+	%{0}
+	break;
+])
